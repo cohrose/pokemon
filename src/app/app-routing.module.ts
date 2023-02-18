@@ -9,14 +9,13 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
   { path: 'view/:name', component: ViewPokemonComponent },
   { path: 'type/:type', component: TypesComponent },
-  { path: 'not-found', component: ErrorComponent },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
+  { path: 'not-found', component: ErrorComponent }
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
+    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })
   ],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
