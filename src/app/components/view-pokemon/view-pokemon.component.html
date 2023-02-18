@@ -3,12 +3,29 @@
   <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px">
     <div *ngIf="getArt()" fxFlex="600px" fxFlex.lt-sm="100%" class="art">
       <img [src]="getArt()" alt="Official ArtWork" />
-      <div [gdColumns]="stats.sprites.back_default ? '1fr 1fr 1fr 1fr' : '1fr 1fr'" gdColumns.lt-sm="1fr 1fr"
-        gdAlign="center" gdGap="35px" class="sprites">
+      <div
+        [gdColumns]="stats.sprites.back_default ? '1fr 1fr 1fr 1fr' : '1fr 1fr'"
+        gdColumns.lt-sm="1fr 1fr"
+        gdAlign="center"
+        gdGap="35px"
+        class="sprites"
+      >
         <img [src]="stats.sprites.front_default" alt="Front Default" />
-        <img *ngIf="stats.sprites.back_default" [src]="stats.sprites.back_default" alt="Back Default" />
-        <img *ngIf="stats.sprites.front_shiny" [src]="stats.sprites.front_shiny" alt="Shiny Front" />
-        <img *ngIf="stats.sprites.back_shiny" [src]="stats.sprites.back_shiny" alt="Shiny Back" />
+        <img
+          *ngIf="stats.sprites.back_default"
+          [src]="stats.sprites.back_default"
+          alt="Back Default"
+        />
+        <img
+          *ngIf="stats.sprites.front_shiny"
+          [src]="stats.sprites.front_shiny"
+          alt="Shiny Front"
+        />
+        <img
+          *ngIf="stats.sprites.back_shiny"
+          [src]="stats.sprites.back_shiny"
+          alt="Shiny Back"
+        />
       </div>
     </div>
     <div fxFlex>
@@ -17,8 +34,12 @@
           <h2>Type</h2>
           <div fxLayoutGap="12px" fxLayout="column" fxLayout.lt-sm="row">
             <div *ngFor="let type of stats.types">
-              <a class="type" [class]="type.type.name"
-                [routerLink]="['/type', type.type.name]">{{ type.type.name | uppercase }}</a>
+              <a
+                class="type"
+                [class]="type.type.name"
+                [routerLink]="['/type', type.type.name]"
+                >{{ type.type.name | uppercase }}</a
+              >
             </div>
           </div>
         </div>
@@ -32,7 +53,12 @@
         </div>
       </div>
       <h2>Moves</h2>
-      <div gdColumns="1fr 1fr 1fr 1fr" gdColumns.lt-md="1fr 1fr 1fr" gdColumns.lt-sm="1fr 1fr" gdGap="10px">
+      <div
+        gdColumns="1fr 1fr 1fr 1fr"
+        gdColumns.lt-md="1fr 1fr 1fr"
+        gdColumns.lt-sm="1fr 1fr"
+        gdGap="10px"
+      >
         <div *ngFor="let move of getMoves()">
           {{ move.move.name | formatdash }}
         </div>
@@ -40,12 +66,21 @@
       <div fxLayoutAlign="center" class="more" *ngIf="stats.moves.length > 48">
         <button mat-stroked-button (click)="hide = !hide">
           Show {{ hide ? "More" : "Less" }}
-          <i class="fa-solid chevron" [ngClass]="hide ? 'fa-chevron-down' : 'fa-chevron-up'"></i>
+          <i
+            class="fa-solid chevron"
+            [ngClass]="hide ? 'fa-chevron-down' : 'fa-chevron-up'"
+          ></i>
         </button>
       </div>
     </div>
   </div>
-  <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px" fxLayoutGap.lt-sm="5px" class="bottom">
+  <div
+    fxLayout="row"
+    fxLayoutAlign="center"
+    fxLayoutGap="20px"
+    fxLayoutGap.lt-sm="5px"
+    class="bottom"
+  >
     <div class="card" [routerLink]="['/view', stats.id - 1]">
       <h3>Previous</h3>
       <img [src]="getSprite(stats.id - 1)" alt="Front Default" />

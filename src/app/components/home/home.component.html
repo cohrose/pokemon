@@ -1,19 +1,40 @@
 <div class="home-container">
   <h1>Search Pokemon</h1>
   <div fxLayoutAlign="center">
-    <mat-form-field fxFlex="50%" fxFlex.lt-md="80%" fxFlex.lt-sm="100%" appearance="outline">
+    <mat-form-field
+      fxFlex="50%"
+      fxFlex.lt-md="80%"
+      fxFlex.lt-sm="100%"
+      appearance="outline"
+    >
       <mat-label>Pokemon</mat-label>
-      <input matInput [(ngModel)]="searchTerm" (keyup.enter)="search()" type="text" />
+      <input
+        matInput
+        [(ngModel)]="searchTerm"
+        (keyup.enter)="search()"
+        type="text"
+        placeholder="Type exact name"
+      />
       <button matSuffix mat-icon-button class="search" (click)="search()">
         <i class="fa-solid fa-magnifying-glass fa-lg"></i>
       </button>
     </mat-form-field>
   </div>
-  <div fxLayoutAlign="center" fxLayout="row" fxLayout.lt-md="column" class="button-toggle">
+  <div
+    fxLayoutAlign="center"
+    fxLayout="row"
+    fxLayout.lt-md="column"
+    class="button-toggle"
+  >
     <div>
-      <mat-button-toggle-group name="Generations" aria-label="Pokemon Generations" [(ngModel)]="generation"
-        (ngModelChange)="changeGen($event)" gdColumns="1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr"
-        gdColumns.lt-sm="1fr 1fr 1fr">
+      <mat-button-toggle-group
+        name="Generations"
+        aria-label="Pokemon Generations"
+        [(ngModel)]="generation"
+        (ngModelChange)="changeGen($event)"
+        gdColumns="1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr"
+        gdColumns.lt-sm="1fr 1fr 1fr"
+      >
         <mat-button-toggle value="one">Gen 1</mat-button-toggle>
         <mat-button-toggle value="two">Gen 2</mat-button-toggle>
         <mat-button-toggle value="three">Gen 3</mat-button-toggle>
@@ -26,14 +47,30 @@
       </mat-button-toggle-group>
     </div>
     <div fxLayoutAlign.lt-md="center">
-      <mat-slide-toggle [(ngModel)]="shiny" [disabled]="generation == 'nine'" matTooltip="Not Available"
-        matTooltipClass="tooltip" [matTooltipDisabled]="generation != 'nine'">Shiny</mat-slide-toggle>
+      <mat-slide-toggle
+        [(ngModel)]="shiny"
+        [disabled]="generation == 'nine'"
+        matTooltip="Not Available"
+        matTooltipClass="tooltip"
+        [matTooltipDisabled]="generation != 'nine'"
+        >Shiny</mat-slide-toggle
+      >
     </div>
   </div>
   <div>
-    <div class="list" fxFlex fxLayout="row wrap" fxLayoutGap="20px" fxLayoutGap.lt-sm="13px">
-      <app-card [routerLink]="['/view', poke.name]" *ngFor="let poke of pokemon" [name]="poke.name"
-        [sprite]="createUrl(poke.url)"></app-card>
+    <div
+      class="list"
+      fxFlex
+      fxLayout="row wrap"
+      fxLayoutGap="20px"
+      fxLayoutGap.lt-sm="13px"
+    >
+      <app-card
+        [routerLink]="['/view', poke.name]"
+        *ngFor="let poke of pokemon"
+        [name]="poke.name"
+        [sprite]="createUrl(poke.url)"
+      ></app-card>
     </div>
   </div>
 </div>
