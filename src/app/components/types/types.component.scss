@@ -1,0 +1,27 @@
+.list {
+  justify-content: center;
+  margin-right: -20px;
+}
+
+.error {
+  margin-right: 0px !important;
+}
+
+.type {
+  border-radius: 5px;
+  padding: 2px 15px 3px 15px;
+  width: fit-content;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgb(0 0 0 / 70%);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.type-container {
+  margin-bottom: 18px;
+}
+
+.type-list {
+  justify-content: center;
+  margin: 15px 0;
+}

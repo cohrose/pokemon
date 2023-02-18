@@ -1,0 +1,28 @@
+i {
+  margin-right: 13px;
+}
+
+#pikachu {
+  position: relative;
+  bottom: 3%;
+  left: 1%;
+  max-width: 90px;
+  -webkit-animation: slidein 5s linear 1s infinite running;
+  animation: slidein 5s linear 1s infinite running;
+}
+
+.text {
+  margin-bottom: 30px;
+}
+
+@media screen and (max-width: 1280px) {
+  .gif {
+    padding-right: 30px;
+  }
+}
+
+@media screen and (max-width: 730px) {
+  .gif {
+    padding-right: 75px;
+  }
+}

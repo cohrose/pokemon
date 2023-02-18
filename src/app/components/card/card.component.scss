@@ -1,0 +1,20 @@
+.wrapper {
+  padding: 15px;
+  border-radius: 5px;
+  background: #fff;
+  max-width: 130px;
+  text-align: center;
+  margin-bottom: 20px;
+  cursor: pointer;
+  img {
+    width: 96px;
+    height: 96px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .wrapper {
+    padding: 3px 0;
+    margin-bottom: 10px;
+  }
+}

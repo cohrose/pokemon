@@ -1,0 +1,38 @@
+<div class="home-container">
+  <h1>Pokemon Types</h1>
+  <div fxLayoutAlign="center">
+    <div
+      fxFlex="50%"
+      fxFlex.lt-md="80%"
+      fxFlex.lt-sm="100%"
+      fxLayoutGap="12px"
+      fxLayout="row wrap"
+      class="type-list"
+    >
+      <div *ngFor="let type of types" class="type-container">
+        <a class="type" [class]="type" [routerLink]="['/type', type]">{{
+          type | uppercase
+        }}</a>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="type">
+    <div
+      class="list"
+      fxFlex
+      fxLayout="row wrap"
+      fxLayoutGap="20px"
+      fxLayoutGap.lt-sm="13px"
+    >
+      <app-card
+        [routerLink]="['/view', poke.pokemon.name]"
+        *ngFor="let poke of type.pokemon"
+        [name]="poke.pokemon.name"
+        [sprite]="createUrl(poke.pokemon.url)"
+        [isType]="true"
+        (isBlank)="poke.blank = true"
+        [class.error]="poke.blank"
+      ></app-card>
+    </div>
+  </div>
+</div>

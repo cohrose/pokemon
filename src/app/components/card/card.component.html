@@ -1,0 +1,10 @@
+<div class="wrapper mat-elevation-z3" *ngIf="!error">
+  <img
+    id="image"
+    [src]="sprite"
+    alt="Pikachu Sprite"
+    (error)="notFound($event)"
+  />
+  <div *ngIf="!isType">{{ name | format }}</div>
+  <div *ngIf="isType">{{ name | replacedash }}</div>
+</div>
