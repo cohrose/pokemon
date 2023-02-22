@@ -58,7 +58,7 @@
         *ngFor="let ability of abilities"
         gdColumns="135px 1fr"
       >
-        <div class="key">{{ ability.name }}</div>
+        <div class="key">{{ ability.name | formatdash }}</div>
         <div>{{ getAbilityText(ability) }}</div>
       </div>
 
