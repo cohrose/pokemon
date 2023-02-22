@@ -37,3 +37,21 @@ export class ReplaceDashPipe implements PipeTransform {
     return text.charAt(0).toUpperCase() + ending;
   }
 }
+
+@Pipe({ name: 'formatversion' })
+export class FormatVersion implements PipeTransform {
+  transform(txt: string): string {
+    if (txt == 'firered') {
+      return 'Fire Red';
+    } else if (txt == 'leafgreen') {
+      return 'Leaf Green';
+    } else if (txt == 'soulsilver') {
+      return 'Soul Silver';
+    } else if (txt == 'heartgold') {
+      return 'Heart Gold';
+    }
+    let ending = txt.substr(1);
+    ending = ending.replace(/\-/g, ' ');
+    return txt.charAt(0).toUpperCase() + ending;
+  }
+}

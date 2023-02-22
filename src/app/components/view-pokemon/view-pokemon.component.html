@@ -52,7 +52,24 @@
           </div>
         </div>
       </div>
-      <h2>Moves</h2>
+      <h2>Abilities</h2>
+      <div
+        class="abilities"
+        *ngFor="let ability of abilities"
+        gdColumns="135px 1fr"
+      >
+        <div class="key">{{ ability.name }}</div>
+        <div>{{ getAbilityText(ability) }}</div>
+      </div>
+
+      <!-- <h2>Game Versions</h2>
+      <div gdColumns="1fr 1fr 1fr" gdGap="10px">
+        <div *ngFor="let version of stats.game_indices">
+          {{ version.version.name | formatversion }}
+        </div>
+      </div> -->
+
+      <!-- <h2>Moves</h2>
       <div
         gdColumns="1fr 1fr 1fr 1fr"
         gdColumns.lt-md="1fr 1fr 1fr"
@@ -62,8 +79,8 @@
         <div *ngFor="let move of getMoves()">
           {{ move.move.name | formatdash }}
         </div>
-      </div>
-      <div fxLayoutAlign="center" class="more" *ngIf="stats.moves.length > 48">
+      </div> -->
+      <!-- <div fxLayoutAlign="center" class="more" *ngIf="stats.moves.length > 48">
         <button mat-stroked-button (click)="hide = !hide">
           Show {{ hide ? "More" : "Less" }}
           <i
@@ -71,7 +88,7 @@
             [ngClass]="hide ? 'fa-chevron-down' : 'fa-chevron-up'"
           ></i>
         </button>
-      </div>
+      </div> -->
     </div>
   </div>
   <div

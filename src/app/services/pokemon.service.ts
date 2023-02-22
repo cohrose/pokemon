@@ -36,4 +36,8 @@ export class PokemonService {
   getType(type: string): Observable<Type> {
     return this.http.get<Type>(`https://pokeapi.co/api/v2/type/${type}`);
   }
+
+  getAbility(url: string) {
+    return this.http.get<any>(url);
+  }
 }

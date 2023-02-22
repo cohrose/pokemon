@@ -8,7 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { FormatPipe } from './shared/format.pipe';
+import { FormatPipe, FormatVersion } from './shared/format.pipe';
 import { FormatDashPipe } from './shared/format.pipe';
 import { ReplaceDashPipe } from './shared/format.pipe';
 import { HomeComponent } from './components/home/home.component';
@@ -34,7 +34,7 @@ const MatModules = [
   MatFormFieldModule,
   MatSlideToggleModule,
   MatButtonToggleModule,
-  MatTooltipModule
+  MatTooltipModule,
 ];
 
 @NgModule({
@@ -46,6 +46,7 @@ const MatModules = [
     FormatPipe,
     FormatDashPipe,
     ReplaceDashPipe,
+    FormatVersion,
     ErrorComponent,
     TypesComponent,
   ],
@@ -62,4 +63,4 @@ const MatModules = [
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

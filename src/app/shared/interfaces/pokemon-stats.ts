@@ -9,9 +9,8 @@ export interface Stats {
   types: Type[];
 }
 
-interface Ability {
-  name: string;
-  url: string;
+export interface Ability {
+  ability: { name: string; url: string };
 }
 
 export interface Move {
