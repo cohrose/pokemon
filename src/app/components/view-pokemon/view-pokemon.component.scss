@@ -5,6 +5,8 @@ h2 {
 
 .art {
   text-align: center;
+  position: relative;
+  top: -10px;
   img {
     width: 100%;
     max-width: 425px;
@@ -43,7 +45,13 @@ h2 {
   box-shadow: none;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 959px) {
+  .art {
+    top: 0;
+  }
+}
+
+@media screen and (max-width: 599px) {
   .bottom {
     .card {
       padding: 3px 5px 0 5px;
