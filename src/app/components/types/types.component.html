@@ -10,13 +10,17 @@
       class="type-list"
     >
       <div *ngFor="let type of types" class="type-container">
-        <a class="type" [class]="type" [routerLink]="['/type', type]">{{
-          type | uppercase
-        }}</a>
+        <a
+          class="type"
+          [ngClass]="activeType.name == type ? 'active' : ''"
+          [class]="type"
+          [routerLink]="['/type', type]"
+          >{{ type | uppercase }}</a
+        >
       </div>
     </div>
   </div>
-  <div *ngIf="type">
+  <div *ngIf="activeType">
     <div
       class="list"
       fxFlex
@@ -26,7 +30,7 @@
     >
       <app-card
         [routerLink]="['/view', poke.pokemon.name]"
-        *ngFor="let poke of type.pokemon"
+        *ngFor="let poke of activeType.pokemon"
         [name]="poke.pokemon.name"
         [sprite]="createUrl(poke.pokemon.url)"
         [isType]="true"

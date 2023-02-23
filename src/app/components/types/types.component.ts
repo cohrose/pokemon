@@ -11,7 +11,7 @@ import { Type } from 'src/app/shared/interfaces/type';
 })
 export class TypesComponent implements OnInit {
   param: string;
-  type: Type;
+  activeType: Type;
   shiny: boolean;
   types = [
     'normal',
@@ -56,7 +56,7 @@ export class TypesComponent implements OnInit {
   getType(type: string): Observable<Type> {
     return this.pokemonService
       .getType(type)
-      .pipe(tap((x: Type) => (this.type = x)));
+      .pipe(tap((x: Type) => (this.activeType = x)));
   }
 
   getNumber(url: string) {

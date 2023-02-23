@@ -1,8 +1,13 @@
+h2 {
+  margin-bottom: 20px;
+  padding-top: 10px;
+}
+
 .art {
   text-align: center;
   img {
     width: 100%;
-    max-width: 475px;
+    max-width: 425px;
   }
   .sprites {
     display: inline-grid !important;
@@ -57,6 +62,10 @@
   text-shadow: 1px 1px 2px rgb(0 0 0 / 70%);
   color: #ffffff;
   text-decoration: none;
+  &:hover {
+    box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%),
+      0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
+  }
 }
 
 .chevron {
@@ -76,7 +85,8 @@
 
 .abilities {
   margin-bottom: 15px;
-  .key {
-    font-weight: 600;
-  }
+}
+
+.key {
+  font-weight: 600;
 }
