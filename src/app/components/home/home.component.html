@@ -12,7 +12,7 @@
         matInput
         [(ngModel)]="searchTerm"
         (keyup.enter)="search()"
-        (keypress.enter)="search()"
+        (keyup.shift.enter)="search()"
         type="text"
         placeholder="Type exact name (ex. 'Caterpie')"
       />
