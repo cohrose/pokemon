@@ -17,8 +17,31 @@
     0px 5px 8px 0px rgba(0, 0, 0, 0.14), 0px 1px 14px 0px rgba(0, 0, 0, 0.12);
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #eef2f0;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #bec2c0;
+  border-radius: 10px;
+  border: 3px solid #eef2f0;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #9ea2a0;
+}
+
 body {
-  background: rgba(95, 133, 117, 0.1) !important;
+  background: #eef2f0 !important;
+  overflow-x: hidden;
 }
 
 h1 {
