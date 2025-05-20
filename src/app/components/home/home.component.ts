@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   shiny: boolean;
   generation: string = 'one';
 
-  constructor(private pokemonService: PokemonService, private router: Router) { }
+  constructor(private pokemonService: PokemonService, private router: Router) {}
 
   ngOnInit(): void {
     this.getAll('one');
@@ -29,13 +29,13 @@ export class HomeComponent implements OnInit {
       .subscribe();
   }
 
-  getNumber(url: string) {
+  getNumber(url: string): string {
     let split = url.split('/');
     split = split.filter((x) => x != '');
     return split[split.length - 1];
   }
 
-  createUrl(url: string) {
+  createUrl(url: string): string {
     if (this.shiny) {
       return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${this.getNumber(
         url
@@ -47,13 +47,13 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  search() {
+  search(): void {
     this.router.navigateByUrl(`/view/${this.searchTerm.toLocaleLowerCase()}`);
   }
 
-  changeGen(gen: string) {
-    if (gen == "nine") {
-      this.shiny = false
+  changeGen(gen: string): void {
+    if (gen == 'nine') {
+      this.shiny = false;
     }
     this.getAll(gen);
   }

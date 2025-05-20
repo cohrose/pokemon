@@ -14,7 +14,7 @@ export class FormatPipe implements PipeTransform {
       newName = name;
     }
     return newName.replace(/\w\S*/g, function (txt) {
-      return txt.charAt(0).toUpperCase() + txt.substr(1);
+      return txt.charAt(0).toUpperCase() + txt.slice(1);
     });
   }
 }
@@ -22,7 +22,7 @@ export class FormatPipe implements PipeTransform {
 @Pipe({ name: 'formatdash' })
 export class FormatDashPipe implements PipeTransform {
   transform(text: string): string {
-    let ending = text.substr(1);
+    let ending = text.slice(1);
     ending = ending.replace(/\-[a-z]/g, (match) => match.toUpperCase());
     return text.charAt(0).toUpperCase() + ending;
   }
@@ -31,7 +31,7 @@ export class FormatDashPipe implements PipeTransform {
 @Pipe({ name: 'replacedash' })
 export class ReplaceDashPipe implements PipeTransform {
   transform(text: string): string {
-    let ending = text.substr(1);
+    let ending = text.slice(1);
     ending = ending.replace(/\-[a-z]/g, (match) => match.toUpperCase());
     ending = ending.replace(/\-/g, ' ');
     return text.charAt(0).toUpperCase() + ending;
@@ -50,7 +50,7 @@ export class FormatVersion implements PipeTransform {
     } else if (txt == 'heartgold') {
       return 'Heart Gold';
     }
-    let ending = txt.substr(1);
+    let ending = txt.slice(1);
     ending = ending.replace(/\-/g, ' ');
     return txt.charAt(0).toUpperCase() + ending;
   }

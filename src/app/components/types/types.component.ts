@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { catchError, map, Observable, switchMap, tap, throwError } from 'rxjs';
 import { PokemonService } from 'src/app/services/pokemon.service';
-import { Type } from 'src/app/shared/interfaces/type';
+import { PokemonType, Type } from 'src/app/shared/interfaces/type';
 
 @Component({
   selector: 'app-types',
@@ -59,13 +59,13 @@ export class TypesComponent implements OnInit {
       .pipe(tap((x: Type) => (this.activeType = x)));
   }
 
-  getNumber(url: string) {
+  getNumber(url: string): string {
     let split = url.split('/');
     split = split.filter((x) => x != '');
     return split[split.length - 1];
   }
 
-  createUrl(url: string) {
+  createUrl(url: string): string {
     if (this.shiny) {
       return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${this.getNumber(
         url
@@ -75,5 +75,9 @@ export class TypesComponent implements OnInit {
         url
       )}.png`;
     }
+  }
+
+  filterOut(pokemon: PokemonType[]): PokemonType[] {
+    return pokemon.filter((x) => +this.getNumber(x.pokemon.url) < 1030);
   }
 }

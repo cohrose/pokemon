@@ -1,5 +1,5 @@
 <div *ngIf="stats" class="container">
-  <h1>{{ stats.name | format }} #{{ stats.id }}</h1>
+  <h1>{{ stats.name | replacedash }} #{{ stats.id }}</h1>
   <div
     fxLayout="row"
     fxLayout.lt-md="column"
@@ -119,8 +119,16 @@
       <h3>Current</h3>
       <img [src]="getSprite(stats.id)" alt="Front Default" />
     </div>
-    <i fxFlexAlign="center" class="fa-solid fa-arrow-right-long fa-2x"></i>
-    <div class="card" [routerLink]="['/view', stats.id + 1]">
+    <i
+      *ngIf="stats.id + 1 <= 1025"
+      fxFlexAlign="center"
+      class="fa-solid fa-arrow-right-long fa-2x"
+    ></i>
+    <div
+      *ngIf="stats.id + 1 <= 1025"
+      class="card"
+      [routerLink]="['/view', stats.id + 1]"
+    >
       <h3>Next</h3>
       <img [src]="getSprite(stats.id + 1)" alt="Front Default" />
     </div>

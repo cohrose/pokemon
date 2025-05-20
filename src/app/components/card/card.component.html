@@ -5,6 +5,5 @@
     alt="Pikachu Sprite"
     (error)="notFound($event)"
   />
-  <div *ngIf="!isType">{{ name | format }}</div>
-  <div *ngIf="isType">{{ name | replacedash }}</div>
+  <div>{{ name | replacedash }}</div>
 </div>

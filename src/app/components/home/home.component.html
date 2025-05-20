@@ -1,5 +1,5 @@
 <div class="home-container">
-  <h1>Pokemon</h1>
+  <h1>Pokémon</h1>
   <div fxLayoutAlign="center">
     <mat-form-field
       fxFlex="50%"
@@ -7,7 +7,7 @@
       fxFlex.lt-sm="100%"
       appearance="outline"
     >
-      <mat-label>Find Pokemon</mat-label>
+      <mat-label>Find Pokémon</mat-label>
       <input
         matInput
         [(ngModel)]="searchTerm"
@@ -48,12 +48,7 @@
       </mat-button-toggle-group>
     </div>
     <div fxLayoutAlign.lt-md="center">
-      <mat-slide-toggle
-        [(ngModel)]="shiny"
-        [disabled]="generation == 'nine'"
-        matTooltip="Not Available"
-        matTooltipClass="tooltip"
-        [matTooltipDisabled]="generation != 'nine'"
+      <mat-slide-toggle [(ngModel)]="shiny" matTooltipClass="tooltip"
         >Shiny</mat-slide-toggle
       >
     </div>

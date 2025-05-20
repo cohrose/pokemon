@@ -4,7 +4,12 @@ import { Move } from './pokemon-stats';
 export interface Type {
   id: number;
   name: string;
-  pokemon: Pokemon[];
+  pokemon: PokemonType[];
   moves: Move;
   blank?: boolean;
+}
+
+export interface PokemonType {
+  pokemon: Pokemon;
+  slot: number;
 }

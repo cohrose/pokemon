@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { AllPokemon } from '../shared/interfaces/all-pokemon';
+import { AllPokemon, Pokemon } from '../shared/interfaces/all-pokemon';
 import { Stats } from '../shared/interfaces/pokemon-stats';
 import { Type } from '../shared/interfaces/type';
 
@@ -25,7 +25,7 @@ export class PokemonService {
 
   getAll(generation: string): Observable<AllPokemon> {
     return this.http.get<AllPokemon>(
-      `https://pokeapi.co/api/v2/pokemon?limit=${generations[generation].limit}&offset=${generations[generation].offset}`
+      `https://pokeapi.co/api/v2/pokemon-species?limit=${generations[generation].limit}&offset=${generations[generation].offset}`
     );
   }
 

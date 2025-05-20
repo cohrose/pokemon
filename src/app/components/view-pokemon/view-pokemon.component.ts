@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { map, tap, switchMap, catchError } from 'rxjs/operators';
-import { Stats } from 'src/app/shared/interfaces/pokemon-stats';
+import { Move, Stats } from 'src/app/shared/interfaces/pokemon-stats';
 import { PokemonService } from 'src/app/services/pokemon.service';
 import { throwError } from 'rxjs';
 
@@ -37,14 +37,14 @@ export class ViewPokemonComponent implements OnInit {
       .subscribe();
   }
 
-  getAbilities(stats: Stats) {
+  getAbilities(stats: Stats): void {
     this.stats = stats;
     stats.abilities.forEach((x) => {
       this.pokemonService
         .getAbility(x.ability.url)
         .pipe(
-          tap((x) => this.abilities.push(x)),
-          tap(() => console.log(this.abilities))
+          tap((x) => this.abilities.push(x))
+          //tap(() => console.log(this.abilities))
         )
         .subscribe();
     });
@@ -54,11 +54,11 @@ export class ViewPokemonComponent implements OnInit {
     return this.stats.sprites.other['official-artwork'].front_default;
   }
 
-  getSprite(id: number) {
+  getSprite(id: number): string {
     return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
   }
 
-  getMoves() {
+  getMoves(): Move[] {
     if (this.hide && this.stats.moves.length > 48) {
       return this.stats.moves.slice(0, 48);
     } else {
@@ -66,7 +66,7 @@ export class ViewPokemonComponent implements OnInit {
     }
   }
 
-  getAbilityText(ability) {
+  getAbilityText(ability): string {
     let found = ability.flavor_text_entries.find((a) => {
       return a.language.name == 'en';
     });

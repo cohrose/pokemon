@@ -16,7 +16,7 @@ export class CardComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  notFound() {
+  notFound(): void {
     this.error = true;
     this.isBlank.emit(true);
   }

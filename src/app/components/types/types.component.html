@@ -1,5 +1,5 @@
 <div class="home-container">
-  <h1>Pokemon Types</h1>
+  <h1>Pokémon Types</h1>
   <div fxLayoutAlign="center">
     <div
       fxFlex="50%"
@@ -30,7 +30,7 @@
     >
       <app-card
         [routerLink]="['/view', poke.pokemon.name]"
-        *ngFor="let poke of activeType.pokemon"
+        *ngFor="let poke of filterOut(activeType.pokemon)"
         [name]="poke.pokemon.name"
         [sprite]="createUrl(poke.pokemon.url)"
         [isType]="true"
