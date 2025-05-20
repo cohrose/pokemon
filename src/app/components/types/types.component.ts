@@ -78,6 +78,6 @@ export class TypesComponent implements OnInit {
   }
 
   filterOut(pokemon: PokemonType[]): PokemonType[] {
-    return pokemon.filter((x) => +this.getNumber(x.pokemon.url) < 1030);
+    return pokemon.filter((x) => +this.getNumber(x.pokemon.url) <= 1025);
   }
 }
