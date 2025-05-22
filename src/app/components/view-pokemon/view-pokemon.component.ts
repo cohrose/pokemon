@@ -35,7 +35,6 @@ export class ViewPokemonComponent implements OnInit {
         tap((x: Species) => (this.species = x)),
         filter(() => this.species.varieties.length > 1),
         switchMap(() => zip(this.getSpecies())),
-        tap((x) => console.log(this.species)),
         catchError((err) => {
           this.router.navigateByUrl('/not-found');
           return throwError(err);
@@ -49,10 +48,7 @@ export class ViewPokemonComponent implements OnInit {
     stats.abilities.forEach((x) => {
       this.pokemonService
         .getAbility(x.ability.url)
-        .pipe(
-          tap((x) => this.abilities.push(x))
-          //tap(() => console.log(this.abilities))
-        )
+        .pipe(tap((x) => this.abilities.push(x)))
         .subscribe();
     });
   }
