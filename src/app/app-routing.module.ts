@@ -7,7 +7,7 @@ import { TypesComponent } from './components/types/types.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
-  { path: 'view/:name', component: ViewPokemonComponent },
+  { path: 'view/:id', component: ViewPokemonComponent },
   { path: 'type/:type', component: TypesComponent },
   { path: 'not-found', component: ErrorComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' },

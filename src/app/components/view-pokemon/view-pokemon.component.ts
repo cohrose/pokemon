@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { map, tap, switchMap, catchError } from 'rxjs/operators';
+import { map, tap, switchMap, catchError, filter } from 'rxjs/operators';
 import { Move, Stats } from 'src/app/shared/interfaces/pokemon-stats';
 import { PokemonService } from 'src/app/services/pokemon.service';
-import { throwError } from 'rxjs';
+import { Observable, throwError, zip } from 'rxjs';
+import { Species } from 'src/app/shared/interfaces/species';
 
 @Component({
   selector: 'app-view-pokemon',
@@ -11,10 +12,11 @@ import { throwError } from 'rxjs';
   styleUrls: ['./view-pokemon.component.scss'],
 })
 export class ViewPokemonComponent implements OnInit {
-  pokemon: string;
+  pokemonId: string;
   stats: Stats;
   hide: boolean = true;
   abilities = [];
+  species: Species;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,9 +28,14 @@ export class ViewPokemonComponent implements OnInit {
     this.route.paramMap
       .pipe(
         tap(() => (this.abilities = [])),
-        map((params: ParamMap) => (this.pokemon = params.get('name'))),
+        map((params: ParamMap) => (this.pokemonId = params.get('id'))),
         switchMap((x: string) => this.pokemonService.getOne(x)),
         tap((x: Stats) => this.getAbilities(x)),
+        switchMap(() => this.pokemonService.getSpecies(this.pokemonId)),
+        tap((x: Species) => (this.species = x)),
+        filter(() => this.species.varieties.length > 1),
+        switchMap(() => zip(this.getSpecies())),
+        tap((x) => console.log(this.species)),
         catchError((err) => {
           this.router.navigateByUrl('/not-found');
           return throwError(err);
@@ -48,6 +55,20 @@ export class ViewPokemonComponent implements OnInit {
         )
         .subscribe();
     });
+  }
+
+  getSpecies(): Observable<Stats>[] {
+    return this.species.varieties.map((variety) => {
+      return this.pokemonService
+        .getOne(this.getNumber(variety.pokemon.url))
+        .pipe(tap((x) => (variety.sprite = x.sprites.front_default)));
+    });
+  }
+
+  getNumber(url: string): string {
+    let split = url.split('/');
+    split = split.filter((x) => x != '');
+    return split[split.length - 1];
   }
 
   getArt(): string {

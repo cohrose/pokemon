@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { AllPokemon, Pokemon } from '../shared/interfaces/all-pokemon';
+import { AllPokemon } from '../shared/interfaces/all-pokemon';
 import { Stats } from '../shared/interfaces/pokemon-stats';
 import { Type } from '../shared/interfaces/type';
+import { Species } from '../shared/interfaces/species';
 
 const generations = {
   one: { limit: '151', offset: '0' },
@@ -29,8 +30,14 @@ export class PokemonService {
     );
   }
 
-  getOne(name: string): Observable<Stats> {
-    return this.http.get<Stats>(`https://pokeapi.co/api/v2/pokemon/${name}`);
+  getOne(id: string): Observable<Stats> {
+    return this.http.get<Stats>(`https://pokeapi.co/api/v2/pokemon/${id}`);
+  }
+
+  getSpecies(id: string): Observable<Species> {
+    return this.http.get<Species>(
+      `https://pokeapi.co/api/v2/pokemon-species/${id}`
+    );
   }
 
   getType(type: string): Observable<Type> {

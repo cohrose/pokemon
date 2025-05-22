@@ -1,13 +1,29 @@
-<div *ngIf="stats" class="container">
-  <h1>{{ stats.name | replacedash }} #{{ stats.id }}</h1>
+<div *ngIf="species" class="container">
+  <div>
+    <h1>{{ species.name | replacedash }} #{{ stats.id }}</h1>
+    <div style="text-align: center">
+      <a
+        *ngFor="let type of stats.types"
+        matTooltip="View Type "
+        matTooltipShowDelay="600"
+        class="type"
+        [class]="type.type.name"
+        [routerLink]="['/type', type.type.name]"
+        >{{ type.type.name | uppercase }}</a
+      >
+    </div>
+  </div>
   <div
     fxLayout="row"
     fxLayout.lt-md="column"
     fxLayoutGap="20px"
     fxLayoutGap.lt-md="0"
+    style="margin-top: 20px"
   >
-    <div *ngIf="getArt()" fxFlex="550px" fxFlex.lt-sm="100%" class="art">
-      <img [src]="getArt()" alt="Official ArtWork" />
+    <div *ngIf="getArt()" fxFlex class="art">
+      <div>
+        <img [src]="getArt()" alt="Official ArtWork" />
+      </div>
       <div
         [gdColumns]="stats.sprites.back_default ? '1fr 1fr 1fr 1fr' : '1fr 1fr'"
         gdColumns.lt-sm="1fr 1fr"
@@ -34,33 +50,16 @@
       </div>
     </div>
     <div fxFlex>
-      <div fxLayout="row" fxLayout.lt-lg="column">
-        <div fxFlex="35%">
-          <h2>Type</h2>
-          <div fxLayoutGap="12px" fxLayout>
-            <div *ngFor="let type of stats.types">
-              <a
-                matTooltip="View Type "
-                matTooltipShowDelay="600"
-                class="type"
-                [class]="type.type.name"
-                [routerLink]="['/type', type.type.name]"
-                >{{ type.type.name | uppercase }}</a
-              >
-            </div>
-          </div>
-        </div>
-        <div fxFlex>
-          <h2>Base Stats</h2>
-          <div gdColumns="200px 1fr" gdColumns.lt-md="1fr 1fr" gdGap="10px">
-            <div
-              *ngFor="let stat of stats.stats"
-              gdColumns="130px 1fr"
-              gdColumns.lt-sm="125px 1fr"
-            >
-              <div class="key">{{ stat.stat.name | formatdash }}</div>
-              <div>{{ stat.base_stat }}</div>
-            </div>
+      <div>
+        <h2>Base Stats</h2>
+        <div gdColumns="200px 1fr" gdColumns.lt-md="1fr 1fr" gdGap="10px">
+          <div
+            *ngFor="let stat of stats.stats"
+            gdColumns="130px 1fr"
+            gdColumns.lt-sm="125px 1fr"
+          >
+            <div class="key">{{ stat.stat.name | formatdash }}</div>
+            <div>{{ stat.base_stat }}</div>
           </div>
         </div>
       </div>
@@ -72,6 +71,22 @@
       >
         <div class="key">{{ ability.name | formatdash }}</div>
         <div>{{ getAbilityText(ability) }}</div>
+      </div>
+
+      <div *ngIf="species && species.varieties.length > 1">
+        <h2 style="margin-bottom: 16px">Varieties</h2>
+        <div
+          gdColumns="1fr 1fr 1fr 1fr"
+          gdColumns.lt-sm="1fr 1fr"
+          gdAlign="center"
+          gdGap="15px"
+          class="sprites"
+        >
+          <div *ngFor="let variety of species.varieties" class="variety">
+            <img [src]="variety.sprite" alt="Pokemon Sprite" />
+            <div>{{ variety.pokemon.name | replacedash }}</div>
+          </div>
+        </div>
       </div>
 
       <!-- <h2>Game Versions</h2>
@@ -110,11 +125,19 @@
     fxLayoutGap.lt-sm="5px"
     class="bottom"
   >
-    <div class="card" [routerLink]="['/view', stats.id - 1]">
+    <div
+      class="card"
+      [routerLink]="['/view', stats.id - 1]"
+      *ngIf="stats.id - 1 != 0"
+    >
       <h3>Previous</h3>
       <img [src]="getSprite(stats.id - 1)" alt="Front Default" />
     </div>
-    <i fxFlexAlign="center" class="fa-solid fa-arrow-left-long fa-2x"></i>
+    <i
+      fxFlexAlign="center"
+      class="fa-solid fa-arrow-left-long fa-2x"
+      *ngIf="stats.id - 1 != 0"
+    ></i>
     <div class="card current">
       <h3>Current</h3>
       <img [src]="getSprite(stats.id)" alt="Front Default" />

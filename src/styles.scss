@@ -49,20 +49,20 @@ h1 {
 }
 
 .container {
-  padding: 0 100px;
+  padding: 0 30px;
   margin: 0 auto;
   max-width: 1500px;
 }
 
 @media screen and (max-width: 1280px) {
   .container {
-    padding: 30px 50px;
+    padding: 15px 30px;
   }
 }
 
 @media screen and (max-width: 730px) {
   .container {
-    padding: 30px 15px;
+    padding: 15px;
   }
 }
 

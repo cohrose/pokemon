@@ -1,10 +1,12 @@
+import { Pokemon } from './all-pokemon';
+
 export interface Stats {
   id: number;
   abilities: Ability[];
   location_area_encounters: string;
   moves: Move[];
   name: string;
-  species: Species;
+  species: Pokemon;
   sprites: Sprite;
   types: Type[];
 }
@@ -18,12 +20,7 @@ export interface Move {
   url: string;
 }
 
-export interface Species {
-  name: string;
-  url: string;
-}
-
-interface Sprite {
+export interface Sprite {
   back_default: string;
   back_female: string | null;
   back_shiny: string;

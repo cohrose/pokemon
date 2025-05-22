@@ -62,7 +62,7 @@
       fxLayoutGap.lt-sm="13px"
     >
       <app-card
-        [routerLink]="['/view', poke.name]"
+        [routerLink]="['/view', getNumber(poke.url)]"
         *ngFor="let poke of pokemon"
         [name]="poke.name"
         [sprite]="createUrl(poke.url)"
